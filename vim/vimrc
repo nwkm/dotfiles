@@ -14,7 +14,8 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdcommenter' ",  {'on': 'NERDTreeToggle'}
 Plug 'scrooloose/nerdtree'
-"Plug 'tmux-plugins/vim-tmux'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tmux-plugins/vim-tmux'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
@@ -23,12 +24,12 @@ Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
 Plug 'mhinz/vim-startify'
 Plug 'edkolev/tmuxline.vim'
-Plug 'chemzqm/vim-jsx-improve'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
 Plug 'udalov/kotlin-vim'
 
@@ -42,6 +43,7 @@ let g:fzf_action = {
       \ 'ctrl-v': 'vsplit'
       \ }
 nnoremap <C-p> :FZF<cr>
+nnoremap <C-g> :Rg<Cr>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " emmet-vim
@@ -74,7 +76,7 @@ endif
 "let g:airline_right_sep = ''
 "let g:airline_left_sep= '░'
 "let g:airline_right_sep= '░'
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = '░'
 "let g:airline#extensions#tabline#left_sep = ''
@@ -83,13 +85,14 @@ let g:airline#extensions#tabline#enabled = 1
 " vim-devicons
 "autocmd FileType nerdtree setlocal nolist
 "let g:WebDevIconsUnicodeDecorateFolderNodes=1
-let g:WebDevIconsNerdTreeAfterGlyphPadding=''
+let g:WebDevIconsNerdTreeAfterGlyphPadding=' '
 "let g:WebDevIconsNerdTreeGitPluginForceVAlign=0
 "let g:webdevicons_conceal_nerdtree_brackets = 0
 
 " NerdTree
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=[
+    \ 'node_modules$[[dir]]',
     \ '.git$[[dir]]',
     \ '.vscode$[[dir]]',
     \ '.idea$[[dir]]',
@@ -99,6 +102,18 @@ let NERDTreeIgnore=[
     \ ]
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 " vim-startify
 let g:startify_session_dir='~/.vim/session'
@@ -123,7 +138,7 @@ let g:startify_list_order=[
 " Tmuxline
 let g:tmuxline_theme = 'vim-powerline'
 let g:tmuxline_preset = 'tmux'
-let g:tmuxline_powerline_separators = 0
+"let g:tmuxline_powerline_separators = 0
 
 " Few configurations:
 " set mouse=a //allow mouse use in vim!!
@@ -160,8 +175,8 @@ syntax enable
 "colorscheme custom
 set background=dark
 
-"colorscheme monokai-inspired
-colorscheme turtles
+colorscheme monokai-inspired
+"colorscheme turtles
 "colorscheme default
 
 " yaml indentation

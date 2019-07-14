@@ -1,0 +1,21 @@
+[alias]
+	lg1 = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+	lg2 = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+	lg = !"git lg1"
+
+	i = init
+	s = status
+	p = push
+	a = add
+	c = commit -am
+	b = branch
+
+	ra = remote add
+	po = push origin
+	co = checkout
+
+	pom = push origin master
+
+[user]
+	email = kim.nawin@gmail.com
+	name = nawin9
