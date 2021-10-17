@@ -1,4 +1,3 @@
-Awesome-config
+My Personal Dotfiles 
 ==============
 
-archlinux + awesome wm
