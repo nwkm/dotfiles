@@ -1,88 +1,108 @@
-if not pcall(require, "nvim-treesitter") then
-    return
-end
-
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {
-      "bash",
-      "c",
-      "cpp",
-      "go",
-      "javascript",
-      "typescript",
-      "json",
-      "jsonc",
-      "jsdoc",
-      "lua",
-      "python",
-      "rust",
-      "html",
-      "css",
-      "toml",
-      -- for `nvim-treesitter/playground`
-      "query",
-  },
-  highlight   = {
-    enable = true,
-    -- slow on big files
-    -- disable = { "c", "cpp", }
-  },
-  textobjects = {
-    select = {
-      enable  = true,
-      keymaps = {
-        ["ac"] = "@comment.outer"      ,
-        ["ic"] = "@class.inner"      ,
-        ["ab"] = "@block.outer"      ,
-        ["ib"] = "@block.inner"      ,
-        ["af"] = "@function.outer"   ,
-        ["if"] = "@function.inner"   ,
-        -- Leader mappings, dups for whichkey
-        ["<Leader><Leader>ab"] = "@block.outer"      ,
-        ["<Leader><Leader>ib"] = "@block.inner"      ,
-        ["<Leader><Leader>af"] = "@function.outer"   ,
-        ["<Leader><Leader>if"] = "@function.inner"   ,
-        ["<Leader><Leader>ao"] = "@class.outer"      ,
-        ["<Leader><Leader>io"] = "@class.inner"      ,
-        ["<Leader><Leader>aC"] = "@call.outer"       ,
-        ["<Leader><Leader>iC"] = "@call.inner"       ,
-        ["<Leader><Leader>ac"] = "@conditional.outer",
-        ["<Leader><Leader>ic"] = "@conditional.inner",
-        ["<Leader><Leader>al"] = "@loop.outer"       ,
-        ["<Leader><Leader>il"] = "@loop.inner"       ,
-        ["<Leader><Leader>ap"] = "@parameter.outer"  ,
-        ["<Leader><Leader>ip"] = "@parameter.inner"  ,
-        ["<Leader><Leader>is"] = "@scopename.inner"  ,
-        ["<Leader><Leader>as"] = "@statement.outer"  ,
-      },
+return {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    event = {
+        'BufReadPost',
+        'BufNewFile'
     },
-  },
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- Whether the query persists across vim sessions
-    keybindings = {
-      toggle_query_editor = 'o',
-      toggle_hl_groups = 'i',
-      toggle_injected_languages = 't',
-      toggle_anonymous_nodes = 'a',
-      toggle_language_display = 'I',
-      focus_language = 'f',
-      unfocus_language = 'F',
-      update = 'R',
-      goto_node = '<cr>',
-      show_help = '?',
+    opts = {
+        ensure_installed = {
+            "tsx",
+            "typescript",
+            "javascript",
+            "html",
+            "css",
+            "vue",
+            "gitcommit",
+            "graphql",
+            "json",
+            "json5",
+            "lua",
+            "markdown",
+            "prisma",
+        },
+        sync_install = false,           -- install languages synchronously (only applied to `ensure_installed`)
+        ignore_install = { "haskell" }, -- list of parsers to ignore installing
+        highlight = {
+            enable = true,
+            -- disable = { "c", "rust" },  -- list of language that will be disabled
+            -- additional_vim_regex_highlighting = false,
+        },
+        incremental_selection = {
+            enable = false,
+            keymaps = {
+              -- init_selection    = "<leader>gnn",
+              -- node_incremental  = "<leader>gnr",
+              -- scope_incremental = "<leader>gne",
+              -- node_decremental  = "<leader>gnt",
+            },
+        },
+        
+        indent = {
+            enable = true
+        },
+        
+        rainbow = {
+            enable = true,
+            extended_mode = true,
+        },
+        
+        context_commentstring = {
+            enable = true,
+            enable_autocmd = false,
+        },
+        
+        textobjects = {
+            move = {
+              enable = true,
+              set_jumps = true, -- whether to set jumps in the jumplist
+              goto_next_start = {
+                ["]]"] = "@function.outer",
+                ["]m"] = "@class.outer",
+              },
+              goto_next_end = {
+                ["]["] = "@function.outer",
+                ["]M"] = "@class.outer",
+              },
+              goto_previous_start = {
+                ["[["] = "@function.outer",
+                ["[m"] = "@class.outer",
+              },
+              goto_previous_end = {
+                ["[]"] = "@function.outer",
+                ["[M"] = "@class.outer",
+              },
+            },
+            select = {
+              enable = true,
+        
+              -- Automatically jump forward to textobj, similar to targets.vim
+              lookahead = true,
+        
+              keymaps = {
+                -- You can use the capture groups defined in textobjects.scm
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+              },
+            },
+            swap = {
+              enable = true,
+              swap_next = {
+                ["~"] = "@parameter.inner",
+              },
+            },
+        },
+        
+        textsubjects = {
+            enable = true,
+            keymaps = {
+              ['<cr>'] = 'textsubjects-smart', -- works in visual mode
+            }
+        },
     },
-  },
+    config = function(_, opts)
+        require('nvim-treesitter.configs').setup(opts)
+    end,
 }
-
-if pcall(require, "nvim-treesitter.parsers") then
-  -- install with ':TSInstallSync markdown'
-  require "nvim-treesitter.parsers".get_parser_configs().markdown = {
-    install_info = {
-      url = "https://github.com/ikatyang/tree-sitter-markdown",
-      files = { "src/parser.c", "src/scanner.cc" },
-    }
-  }
-end

@@ -1,36 +1,94 @@
--- Do not use plugins when running as root or neovim < 0.5
-if require'utils'.is_root() or not require'utils'.has_neovim_v05() then
-  return
-end
+return {
+    -- nvim-surround
+    {
+        'kylechui/nvim-surround',
+        event = {
+            'BufReadPost',
+            'BufNewFile'
+        },
+        config = true
+    },
 
-local ok, packer = pcall(require, 'plugins.packer')
-if not ok then return end
+    -- Comment.nvim
+    {
+        'numToStr/Comment.nvim',
+        event = {
+            'BufReadPost',
+            'BufNewFile'
+        },
+        opts = {
+            toggler = {
+                line = '<C-/>',
+            },
+            opleader = {
+                line = '<C-/>',
+            },
+        },
+        config = true
+    },
 
--- Packer commands
-vim.cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
-vim.cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]]
-vim.cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]
-vim.cmd [[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]]
-vim.cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]]
-vim.cmd [[command! PC PackerCompile]]
-vim.cmd [[command! PS PackerStatus]]
-vim.cmd [[command! PU PackerSync]]
+    -- bufdelete.nvim
+    {
+        'famiu/bufdelete.nvim',
+        cmd = {
+            'Bdelete',
+            'Bwipeout'
+        }
+    },
 
-if vim.loop.fs_stat(packer.config.compile_path) then
-  -- since we customized the compilation path for packer
-  -- we need to manually load 'packer_compiled.lua'
-  vim.cmd("luafile " .. packer.config.compile_path)
-else
-  -- no 'packer_compiled.lua', we assume this is the
-  -- first time install, 'sync()' will clone|update
-  -- our plugins and generate 'packer_compiled.lua'
-  packer.sync()
-end
+    -- hlargs.nvim
+    {
+        'm-demare/hlargs.nvim',
+        dependencies = 'nvim-treesitter/nvim-treesitter',
+        ft = {
+            'c',
+            'cpp',
+            'cs',
+            'go',
+            'java',
+            'js',
+            'jsx',
+            'ts',
+            'tsx',
+            'jl',
+            'lua',
+            'nix',
+            'php',
+            'py',
+            'r',
+            'R',
+            'rb',
+            'vim',
+            'zig',
+            'rs'
+        },
+        config = true
+    },
 
-local plugins = setmetatable({}, {
-  __index = function(_, key)
-    return packer[key]
-  end
-})
+    -- nvim-hlslens
+    {
+        'kevinhwang91/nvim-hlslens',
+        keys = {
+            'n',
+            'N',
+            '*',
+            '#'
+        },
+        dependencies = 'romainl/vim-cool',
+        config = true
+    },
 
-return plugins
+    -- numb.nvim
+    {
+        'nacro90/numb.nvim',
+        event = 'CmdlineEnter',
+        config = true
+    },
+
+    -- symbols-outline.nvim
+    {
+        'simrat39/symbols-outline.nvim',
+        cmd = 'SymbolsOutline',
+        config = true
+    }
+}
