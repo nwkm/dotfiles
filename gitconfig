@@ -15,7 +15,3 @@
 	co = checkout
 
 	pom = push origin master
-
-[user]
-	email = kim.nawin@gmail.com
-	name = nawin9
