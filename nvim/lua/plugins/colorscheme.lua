@@ -62,21 +62,21 @@ return {
         local c = require("tokyonight.colors").setup()
 
 
-        -- Ecovim Colors
-        vim.api.nvim_set_hl(0, "EcovimPrimary", { fg = "#488dff" })
-        vim.api.nvim_set_hl(0, "EcovimSecondary", { fg = "#FFA630" })
+        -- Nw Colors
+        vim.api.nvim_set_hl(0, "NwPrimary", { fg = "#488dff" })
+        vim.api.nvim_set_hl(0, "NwSecondary", { fg = "#FFA630" })
 
-        vim.api.nvim_set_hl(0, "EcovimPrimaryBold", { bold = true, fg = "#488DFF" })
-        vim.api.nvim_set_hl(0, "EcovimSecondaryBold", { bold = true, fg = "#FFA630" })
+        vim.api.nvim_set_hl(0, "NwPrimaryBold", { bold = true, fg = "#488DFF" })
+        vim.api.nvim_set_hl(0, "NwSecondaryBold", { bold = true, fg = "#FFA630" })
 
-        vim.api.nvim_set_hl(0, "EcovimHeader", { bold = true, fg = "#488DFF" })
-        vim.api.nvim_set_hl(0, "EcovimHeaderInfo", { bold = true, fg = "#FFA630" })
-        vim.api.nvim_set_hl(0, "EcovimFooter", { bold = true, fg = "#FFA630" })
+        vim.api.nvim_set_hl(0, "NwHeader", { bold = true, fg = "#488DFF" })
+        vim.api.nvim_set_hl(0, "NwHeaderInfo", { bold = true, fg = "#FFA630" })
+        vim.api.nvim_set_hl(0, "NwFooter", { bold = true, fg = "#FFA630" })
 
         -- Tokyonight Colorscheme Specific Config
         if nw.colorscheme == "tokyonight" then
-        -- Lines
-            vim.api.nvim_set_hl(0, "CursorLineNR", { link = "EcovimSecondary" })
+            -- Lines
+            vim.api.nvim_set_hl(0, "CursorLineNR", { link = "NwSecondary" })
             vim.api.nvim_set_hl(0, "LineNr", { link = "Comment" })
 
             -- Floats/Windows
@@ -99,7 +99,7 @@ return {
             vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "None" })
             vim.api.nvim_set_hl(0, "rainbowcol1", { fg = c.blue, ctermfg = 9 })
             vim.api.nvim_set_hl(0, "Boolean", { fg = "#F7768E" })
-            vim.api.nvim_set_hl(0, "BufferOffset", { link = "EcovimSecondary" })
+            vim.api.nvim_set_hl(0, "BufferOffset", { link = "NwSecondary" })
 
             -- Completion Menu Colors
             local highlights = {

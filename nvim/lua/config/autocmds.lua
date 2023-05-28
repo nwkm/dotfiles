@@ -1,5 +1,3 @@
--- Auto sync plugins on save of plugins.lua
---vim.api.nvim_create_autocmd("BufWritePost", { pattern = "plugins.lua", command = "source <afile> | PackerSync" })
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost",
   { callback = function() vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 100 }) end })
@@ -12,8 +10,10 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = { "*.txt", 
 
 -- Attach specific keybindings in which-key for specific filetypes
 local present, _ = pcall(require, "which-key")
-if not present then return end
-local _, pwk = pcall(require, "plugins.which-key")
+if not present then
+  return
+end
+local _, pwk = pcall(require, "plugins.which-key.wk-config")
 
 vim.api.nvim_create_autocmd("BufEnter", { pattern = "*.md",
   callback = function() pwk.attach_markdown(0) end })

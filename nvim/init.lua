@@ -5,8 +5,8 @@ require('utils.functions')
 
 require('config.options')
 require('config.mappings')
-require('config.autocmds')
 require('config.lazy')
+require('config.autocmds')
 
 require('internal.winbar')
 require('internal.cursorword')

@@ -4,7 +4,6 @@ return {
 		"<Leader>da",
 		"<Leader>db",
 		"<Leader>dc",
-		"<Leader>dd",
 		"<Leader>dh",
 		"<Leader>di",
 		"<Leader>do",
@@ -14,8 +13,9 @@ return {
 	dependencies = {
 		"theHamsta/nvim-dap-virtual-text",
 		"rcarriga/nvim-dap-ui",
+		"mxsdev/nvim-dap-vscode-js"
 	},
 	config = function()
-		require("plugins.dap.dap-config")
+		require("plugins.dap.adapters")
 	end,
 }

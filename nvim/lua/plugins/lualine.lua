@@ -24,16 +24,14 @@ return {
         },
         sections = {
             lualine_a = { 'mode' },
-            lualine_b = {
-                'branch',
-                'diff',
-            },
+            lualine_b = { 'branch' },
             lualine_c = {
+                'diff',
                 {
                     'diagnostics',
-                    sources = { 'nvim_lsp', 'nvim_diagnostic' },
+                    sources = { 'nvim_diagnostic' },
                     symbols = {
-                        error = nw.icons.diagnostics.Error .. ' ',
+                        error = nw.icons.diagnostics.Error,
                         warn = nw.icons.diagnostics.Warn .. ' ',
                         info = nw.icons.diagnostics.Info .. ' ',
                         hint = nw.icons.diagnostics.Hint .. ' ',

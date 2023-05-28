@@ -3,6 +3,7 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-telescope/telescope-file-browser.nvim',
+        'nvim-telescope/telescope-dap.nvim',
         'debugloop/telescope-undo.nvim',
         "cljoly/telescope-repo.nvim",
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
@@ -109,11 +110,9 @@ return {
                     prompt_position = "top",
                 },
                 file_sorter       = require('telescope.sorters').get_fzy_sorter,
-                -- prompt_prefix     = '  ',
                 prompt_prefix     = " ",
                 selection_caret   = " ",
                 color_devicons    = true,
-                git_icons         = git_icons,
                 sorting_strategy  = "ascending",
                 file_previewer    = require('telescope.previewers').vim_buffer_cat.new,
                 grep_previewer    = require('telescope.previewers').vim_buffer_vimgrep.new,
@@ -167,5 +166,6 @@ return {
         require('telescope').load_extension('fzf')
         require('telescope').load_extension('repo')
         require("telescope").load_extension("git_worktree")
+        require("telescope").load_extension("dap")
     end,
 }

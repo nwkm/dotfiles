@@ -133,8 +133,3 @@ for _, server in ipairs({ "bashls", "emmet_ls", "graphql", "html", "prismals" })
     handlers = handlers,
   })
 end
-
--- require("ufo").setup({
---   fold_virt_text_handler = ufo_config_handler,
---   close_fold_kinds = { "imports" },
--- })

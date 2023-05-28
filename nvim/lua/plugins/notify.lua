@@ -15,16 +15,4 @@ return {
             vim.notify = notify
         end,
     },
-
-    -- nvim-lsp-notify
-    {
-        'mrded/nvim-lsp-notify',
-        event = 'LspAttach',
-        opts = {
-            icons = {
-                spinner = { '┤', '┘', '┴', '└', '├', '┌', '┬', '┐' },
-                done = false
-            },
-        },
-    },
 }

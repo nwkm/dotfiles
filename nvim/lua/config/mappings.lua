@@ -100,12 +100,12 @@ map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", silent)
 map("n", "U", "<cmd>lua vim.lsp.buf.signature_help()<CR>", silent)
 
 -- nvim-hlslens keymaps
-map("n", "n", [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], opts)
-map("n", "N", [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], opts)
-map("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>]], opts)
-map("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], opts)
-map("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], opts)
-map("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
+map("n", "n", [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], silent)
+map("n", "N", [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], silent)
+map("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>]], silent)
+map("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], silent)
+map("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], silent)
+map("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], silent)
 
 -- Telescope
 map("n", "<C-p>", "<CMD>lua require('plugins.telescope.pickers').project_files({ previewer = false })<CR>")
@@ -113,7 +113,3 @@ map("n", "<S-p>", "<CMD>lua require('plugins.telescope.multi-rg')()<CR>")
 
 -- Toggleterm.nvim keymap
 map("n", [[<C-\>]], ":ToggleTerm<CR>", silent)
-
--- Comment Box
--- map("n", "<Leader>ac", "<cmd>lua require('comment-box').lbox()<CR>", silent)
--- map("v", "<Leader>ac", "<cmd>lua require('comment-box').lbox()<CR>", silent)

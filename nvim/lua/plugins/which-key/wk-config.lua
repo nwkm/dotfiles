@@ -99,13 +99,10 @@ local normal_mode_mappings = {
   ['V'] = { '<C-W>s',                                           'split below' },
 
   ['e'] = 'Explorer',
-  ['l'] = 'Toggle lsp_lines',
   ['q'] = 'Quit the current file',
   ['Q'] = 'Quit neovim',
   ['w'] = 'Save the current file',
-  ['m'] = 'Toggle the node under cursor (split if one line, join if multiline)',
   ['o'] = 'Open symbols-outline.nvim',
-  ['j'] = 'Join node under the cursor',
   ['u'] = 'Open undo tree',
 
   ['/'] = {
@@ -126,7 +123,6 @@ local normal_mode_mappings = {
 
   a = {
     name = 'Actions',
-    c = { 'comment box' },
     n = { '<Cmd>set nonumber!<CR>',                      'line numbers' },
     r = { '<Cmd>set norelativenumber!<CR>',              'relative number' },
   },
@@ -158,10 +154,9 @@ local normal_mode_mappings = {
   d = {
     name = 'Debug',
     a = { 'attach' },
-    b = { 'breakpoint' },
+    b = { 'toggle breakpoint' },
     c = { 'continue' },
     C = { 'close UI' },
-    d = { 'continue' },
     h = { 'visual hover' },
     i = { 'step into' },
     o = { 'step over' },
@@ -172,6 +167,9 @@ local normal_mode_mappings = {
     v = { 'log variable' },
     V = { 'log variable above' },
     w = { 'watches' },
+    w = { 'watches' },
+    d = { '<Cmd>Telescope dap configurations<CR>', 'configurations' },
+    f = { '<Cmd>Telescope dap list_breakpoints<CR>', 'all breakpoints' }
   },
 
   g = {
@@ -179,7 +177,6 @@ local normal_mode_mappings = {
     a = { '<Cmd>!git add %:p<CR>',                                              'add current' },
     A = { '<Cmd>!git add .<CR>',                                                'add all' },
     b = { '<Cmd>lua require("internal.blame").open()<CR>',                      'blame' },
-    B = { '<Cmd>Telescope git_branches<CR>',                                    'branches' },
     c = {
       name = 'Conflict',
       b = {'<Cmd>GitConflictChooseBoth<CR>',                                    'choose both'},
@@ -204,18 +201,18 @@ local normal_mode_mappings = {
     l = {
       name = 'Log',
       a = { "<Cmd>LazyGitFilter<CR>",                                      "Commits"},
-      A = { "<Cmd>lua require('plugins.telescope.pickers').my_git_commits()<CR>",  "Commits (Telescope)"},
       c = { "<Cmd>LazyGitFilterCurrentFile<CR>",                           "Buffer commits"},
-      C = { "<Cmd>lua require('plugins.telescope.pickers').my_git_bcommits()<CR>", "Buffer commits (Telescope)"},
+      -- C = { "<Cmd>lua require('plugins.telescope.pickers').my_git_bcommits()<CR>", "Buffer commits (Telescope)"},
+      -- A = { "<Cmd>lua require('plugins.telescope.pickers').my_git_commits()<CR>",  "Commits (Telescope)"},
     },
     m = { "Blame line" },
     n = { "<Cmd>Neogit<CR>", "Neogit" },
     s = { "<Cmd>lua require('plugins.git.git-diffview').toggle_status()<CR>", "Status" },
-    S = { "<Cmd>Telecope git_status<CR>",                                "Status (Telescope)" },
+    
     -- n = { ":!git checkout -b ", "Checkout New Branch" },
     -- o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     -- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    -- c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+    -- 
     -- f = { "<cmd>Telescope git_bcommits<cr>", "Checkout buffer commit" },
     -- d = {
     --   "<cmd>Gitsigns diffthis HEAD<cr>",
@@ -228,8 +225,16 @@ local normal_mode_mappings = {
     }
   },
 
+  f = {
+    name = "Git (Telescope)",
+    b = { "<Cmd>Telescope git_branches<CR>", "branches" },
+    s = { "<Cmd>Telecope git_status<CR>",  "status" },
+    c = { "<Cmd>lua require('plugins.telescope.pickers').my_git_commits()<CR>",  "commits"},
+    u = { "<Cmd>lua require('plugins.telescope.pickers').my_git_bcommits()<CR>", "buffer commits"},
+  },
+
   p = {
-    name = 'Project',
+    name = "Project",
     f = { "<Cmd>lua require('plugins.telescope.pickers').project_files({ default_text = vim.fn.expand('<cword>'), initial_mode = 'normal' })<CR>", 'File' },
     w = { "<Cmd>lua require('telescope.builtin').grep_string({ initial_mode = 'normal' })", 'Word' },
     l = { "<Cmd>lua require'telescope'.extensions.repo.cached_list{file_ignore_patterns={'/%.cache/', '/%.cargo/', '/%.local/', '/%timeshift/', '/usr/', '/srv/', '/%.oh%-my%-zsh', '/Library/', '/%.cocoapods/'}}<CR>", 'List' },
@@ -239,7 +244,7 @@ local normal_mode_mappings = {
   },
 
   s = {
-    name = 'Search',
+    name = "Search",
     -- c = { '<Cmd>Telescope colorscheme<CR>',                              'color schemes' },
     c = { "<Cmd>Telescope commands<CR>",                                 "Commands" },
     d = { '<Cmd>lua require("plugins.telescope.pickers").edit_neovim()<CR>', "Dotfiles" },
@@ -267,7 +272,6 @@ local visual_mode_mappings = {
 
   a = {
     name = "Actions",
-    c = { 'comment box' },
   },
 
   c = {
@@ -382,21 +386,21 @@ local function attach_jest(bufnr)
   })
 end
 
--- local function attach_spectre(bufnr)
---   wk.register({
---     ["R"] = { "[SPECTRE] Replace all"},
---     ["O"] = { "[SPECTRE] Show options"},
---     ["F"] = { "[SPECTRE] Send all to quicklist"},
---     ["M"] = { "[SPECTRE] Change view mode"},
---   }, {
---     buffer = bufnr,
---     mode = "n", -- NORMAL mode
---     prefix = "<leader>",
---     silent = true, -- use `silent` when creating keymaps
---     noremap = true, -- use `noremap` when creating keymaps
---     nowait = false, -- use `nowait` when creating keymaps
---   })
--- end
+local function attach_spectre(bufnr)
+  wk.register({
+    ["R"] = { "[SPECTRE] Replace all" },
+    ["O"] = { "[SPECTRE] Show options" },
+    ["F"] = { "[SPECTRE] Send all to quicklist" },
+    ["M"] = { "[SPECTRE] Change view mode" },
+  }, {
+    buffer = bufnr,
+    mode = "n", -- NORMAL mode
+    prefix = "<leader>",
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = false, -- use `nowait` when creating keymaps
+  })
+end
 
 local function attach_nvim_tree(bufnr)
   wk.register({
@@ -417,6 +421,6 @@ return {
   attach_typescript = attach_typescript,
   attach_npm = attach_npm,
   attach_jest = attach_jest,
-  -- attach_spectre = attach_spectre,
+  attach_spectre = attach_spectre,
   attach_nvim_tree = attach_nvim_tree,
 }
