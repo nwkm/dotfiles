@@ -349,26 +349,26 @@ M.config = function()
   }
   dap.configurations.c = dap.configurations.cpp
 
-  if lvim.builtin.metals.active then
-    dap.configurations.scala = {
-      {
-        type = "scala",
-        request = "launch",
-        name = "Run or Test Target",
-        metals = {
-          runType = "runOrTestFile",
-        },
-      },
-      {
-        type = "scala",
-        request = "launch",
-        name = "Test Target",
-        metals = {
-          runType = "testTarget",
-        },
-      },
-    }
-  end
+  -- if lvim.builtin.metals.active then
+  --   dap.configurations.scala = {
+  --     {
+  --       type = "scala",
+  --       request = "launch",
+  --       name = "Run or Test Target",
+  --       metals = {
+  --         runType = "runOrTestFile",
+  --       },
+  --     },
+  --     {
+  --       type = "scala",
+  --       request = "launch",
+  --       name = "Test Target",
+  --       metals = {
+  --         runType = "testTarget",
+  --       },
+  --     },
+  --   }
+  -- end
   dap.configurations.python = dap.configurations.python or {}
   table.insert(dap.configurations.python, {
     type = "python",

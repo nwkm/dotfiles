@@ -9,7 +9,6 @@ return {
         "NvimTreeFindFileToggle",
     },
     keys = {
-        -- { "<C-e>", "<cmd>lua require('nvim-tree.api').tree.toggle()<CR>", desc = "NvimTree" },
         { "<Leader>e", ":NvimTreeToggle<CR>", desc = "NvimTreeToggle" },
     },
     opts = {

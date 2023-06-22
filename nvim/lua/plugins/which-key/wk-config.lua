@@ -167,7 +167,6 @@ local normal_mode_mappings = {
     v = { 'log variable' },
     V = { 'log variable above' },
     w = { 'watches' },
-    w = { 'watches' },
     d = { '<Cmd>Telescope dap configurations<CR>', 'configurations' },
     f = { '<Cmd>Telescope dap list_breakpoints<CR>', 'all breakpoints' }
   },
@@ -202,13 +201,10 @@ local normal_mode_mappings = {
       name = 'Log',
       a = { "<Cmd>LazyGitFilter<CR>",                                      "Commits"},
       c = { "<Cmd>LazyGitFilterCurrentFile<CR>",                           "Buffer commits"},
-      -- C = { "<Cmd>lua require('plugins.telescope.pickers').my_git_bcommits()<CR>", "Buffer commits (Telescope)"},
-      -- A = { "<Cmd>lua require('plugins.telescope.pickers').my_git_commits()<CR>",  "Commits (Telescope)"},
     },
     m = { "Blame line" },
     n = { "<Cmd>Neogit<CR>", "Neogit" },
     s = { "<Cmd>lua require('plugins.git.git-diffview').toggle_status()<CR>", "Status" },
-    
     -- n = { ":!git checkout -b ", "Checkout New Branch" },
     -- o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     -- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -267,7 +263,6 @@ local normal_mode_mappings = {
 }
 
 local visual_mode_mappings = {
-  -- single
   ["s"] = { "<Cmd>'<,'>sort<CR>",               'sort' },
 
   a = {
@@ -291,7 +286,7 @@ local visual_mode_mappings = {
 
   p = {
     name = "Project",
-    r = { "<Cmd>lua require('spectre').open_visual()<CR>",     "Refactor" },
+    r = { "<Cmd>lua require('spectre').open_visual()<CR>", "refactor" },
   },
 
   t = {

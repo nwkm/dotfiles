@@ -113,3 +113,4 @@ map("n", "<S-p>", "<CMD>lua require('plugins.telescope.multi-rg')()<CR>")
 
 -- Toggleterm.nvim keymap
 map("n", [[<C-\>]], ":ToggleTerm<CR>", silent)
+-- map("n", [[<C-S-\>]], "<CMD>lua require('toggleterm.terminal')<CR>", silent)

@@ -31,7 +31,7 @@ return {
 		event = "BufNewFile",
 		dependencies = { "mason.nvim" },
 	},
-    { "jose-elias-alvarez/typescript.nvim" },
+    -- { "jose-elias-alvarez/typescript.nvim" },
 	{ "onsails/lspkind-nvim" },
 	{
 		"jay-babu/mason-null-ls.nvim",
@@ -55,7 +55,7 @@ return {
                   require("null-ls").builtins.diagnostics.codespell.with({
                     filetypes = { "markdown", "text" },
                   }),
-                  require("typescript.extensions.null-ls.code-actions"),
+                --   require("typescript.extensions.null-ls.code-actions"),
                 },
             })
 		end,
