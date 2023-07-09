@@ -5,7 +5,6 @@ return {
         'nvim-telescope/telescope-file-browser.nvim',
         'nvim-telescope/telescope-dap.nvim',
         'debugloop/telescope-undo.nvim',
-        "cljoly/telescope-repo.nvim",
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
     lazy = false,
@@ -164,7 +163,6 @@ return {
         require('telescope').load_extension('file_browser')
         require('telescope').load_extension('undo')
         require('telescope').load_extension('fzf')
-        require('telescope').load_extension('repo')
         require("telescope").load_extension("git_worktree")
         require("telescope").load_extension("dap")
     end,

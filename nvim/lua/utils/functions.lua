@@ -40,7 +40,7 @@ M.flatten = function(t,r)
       for _, v in ipairs(t) do
           -- Recurse for sub-tables.
           if type(v) == "table" then
-              flatten(v, r)
+              M.flatten(v, r)
           else
               table.insert(r, v)
           end

@@ -125,6 +125,8 @@ local normal_mode_mappings = {
     name = 'Actions',
     n = { '<Cmd>set nonumber!<CR>',                      'line numbers' },
     r = { '<Cmd>set norelativenumber!<CR>',              'relative number' },
+    v = { '<Cmd>ToggleTerm size=80 direction=vertical<CR>', 'toggle vertical term'},
+    V = { '<Cmd>ToggleTerm size=50 direction=horizontal<CR>', 'toggle horizontal term'},
   },
 
   b = {
@@ -255,11 +257,30 @@ local normal_mode_mappings = {
     H = { '<Cmd>lua require("plugins.telescope.pickers").command_history()<CR>', "Command histories" },
   },
 
-  t = {
-    name = 'Table Mode',
-    m = { 'toggle' },
-    t = { 'tableize' },
+  -- t = {
+  --   name = 'Table Mode',
+  --   m = { 'toggle' },
+  --   t = { 'tableize' },
+  -- },
+  r = {
+    name = "Run",
+    l = "Run Last Test",
+    L = "Debug Last Test",
+    w = "Run Watch",
+    f = { "<cmd>OverseerRun<cr>", "Run" },
+    p = { "<cmd>OverseerRunCmd<cr>", "Run with Cmd" },
+    t = { "<cmd>OverseerToggle<cr>", "Toggle" },
   },
+
+  t = {
+    name = "Tasks",
+    b = { "<cmd>OverseerLoadBundle<CR>", "Load Bundle" },
+    s = { "<cmd>OverseerSaveBundle<CR>", "Save Bundle" },
+    n = { "<cmd>OverseerBuild<CR>", "New Task" },
+    q = { "<cmd>OverseerQuickAction<CR>", "Quick Action" },
+    f = { "<cmd>OverseerTaskAction<CR>", "Task Action" },
+    t = { "<cmd>OverseerToggle<cr>", "Toggle Output" },
+  }
 }
 
 local visual_mode_mappings = {

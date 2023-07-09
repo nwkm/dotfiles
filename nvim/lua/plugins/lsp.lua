@@ -49,14 +49,12 @@ return {
                 automatic_setup = true, -- Recommended, but optional
                 handlers = {},
             })
-              
             require("null-ls").setup({
-                sources = {
-                  require("null-ls").builtins.diagnostics.codespell.with({
-                    filetypes = { "markdown", "text" },
-                  }),
-                --   require("typescript.extensions.null-ls.code-actions"),
-                },
+                -- sources = {
+                --   require("null-ls").builtins.diagnostics.codespell.with({
+                --     filetypes = { "markdown", "text" },
+                --   }),
+                -- },
             })
 		end,
 	},
