@@ -145,7 +145,6 @@ local normal_mode_mappings = {
     r = { "Rename" },
     R = { "Structural replace" },
     d = { "<Cmd>TroubleToggle<CR>",                           "Diagnostics" },
-    w = { "<Cmd>TroubleToggle<CR>",                           "Workspace diagnostics" },
     W = { "<Cmd>Telescope diagnostics wrap_results=true<CR>", "Workspace diagnostics (Telescope)" },
     t = { "<Cmd>LspToggleAutoFormat<CR>",                     "Toggle format on save" },
     s = { "<Cmd>TroubleToggle loclist<CR>",                   "Location list" },

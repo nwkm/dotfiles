@@ -62,7 +62,7 @@ local has_words_before = function()
   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
     return false
   end
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 end
 
@@ -70,9 +70,9 @@ end
 --- Depending on the LSP this information is stored in different parts of the
 --- lsp.CompletionItem payload. The process to find them is very manual: log the payloads
 --- And see where useful information is stored.
----@param completion lsp.CompletionItem
----@param source cmp.Source
----@see Astronvim, because i just discovered they're already doing this thing, too
+-- -@param completion lsp.CompletionItem
+-- -@param source cmp.Source
+-- -@see Astronvim, because i just discovered they're already doing this thing, too
 --  https://github.com/AstroNvim/AstroNvim
 local function get_lsp_completion_context(completion, source)
   local ok, source_name = pcall(function()
