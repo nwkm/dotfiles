@@ -1,7 +1,7 @@
 return {
   {
     "pmizio/typescript-tools.nvim",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
     ft = { "typescript", "typescriptreact" },
     dependencies = {
       "nvim-lua/plenary.nvim",

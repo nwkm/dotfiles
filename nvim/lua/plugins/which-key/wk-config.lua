@@ -343,10 +343,10 @@ local function attach_typescript(bufnr)
     c = {
       name = "LSP",
       e = { '<Cmd>TSC<CR>',                                'workspace errors (TSC)'},
-      F = { '<Cmd>TypescriptFixAll<CR>',                   'fix all' },
-      i = { '<Cmd>TypescriptAddMissingImports<CR>',        'import all'},
-      o = { '<Cmd>TypescriptOrganizeImports<CR>',          'organize imports'},
-      u = { '<Cmd>TypescriptRemoveUnused<CR>',             'remove unused' },
+      F = { '<Cmd>TSToolsFixAll<CR>',                   'fix all' },
+      i = { '<Cmd>TSToolsAddMissingImports<CR>',        'import all'},
+      o = { '<Cmd>TSToolsOrganizeImports<CR>',          'organize imports'},
+      u = { '<Cmd>TSToolsRemoveUnused<CR>',             'remove unused' },
     }
   }, {
     buffer = bufnr ,
