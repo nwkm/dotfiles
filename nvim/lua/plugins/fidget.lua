@@ -8,10 +8,6 @@ return {
 			return
 		end
 
-		fidget.setup({
-			sources = {
-				["null-ls"] = { ignore = true },
-			},
-		})
+		fidget.setup({})
 	end
 }
