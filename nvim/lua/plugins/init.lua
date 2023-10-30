@@ -2,10 +2,9 @@ return {
     -- nvim-surround
     {
         'kylechui/nvim-surround',
-        event = {
-            'BufReadPost',
-            'BufNewFile'
-        },
+        lazy = false,
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
         config = true
     },
 

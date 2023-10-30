@@ -4,7 +4,6 @@ return {
     dependencies = {
       "haydenmeade/neotest-jest",
 		  "nvim-treesitter/nvim-treesitter",
-		  "antoinemadec/FixCursorHold.nvim",
       "marilari88/neotest-vitest",
     },
     keys = {

@@ -51,21 +51,15 @@ return {
 			require("plugins.git.git-conflict")
 		end,
 	},
-	{
-		'TimUntersberger/neogit',
-		dependencies = 'nvim-lua/plenary.nvim',
-		cmd = 'Neogit',
-		opts = {
-			kind = 'replace',
-			signs = {
-				-- { CLOSED, OPENED }
-				section = { "", "" },
-				item = { "", "" },
-				hunk = { "", "" },
-			},
-			integrations = { diffview = true }, -- adds integration with diffview.nvim
-		}
-	},
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim"
+    },
+    lazy = false,
+    config = true,
+  },
 	{
 		"kdheepak/lazygit.nvim",
 		cmd = {

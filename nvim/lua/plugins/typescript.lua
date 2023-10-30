@@ -20,6 +20,11 @@ return {
       settings = {
         tsserver_plugins = { "@styled/typescript-styled-plugin" },
       },
+      on_attach = function(_, bufnr)
+				if vim.fn.has("nvim-0.10") then
+				  vim.lsp.inlay_hint(bufnr, true)
+				end
+			end,
     },
   },
 }

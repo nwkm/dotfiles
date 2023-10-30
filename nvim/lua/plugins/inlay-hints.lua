@@ -8,6 +8,7 @@ return {
 				  highlight = "LspCodeLens",
 				},
 				debug_mode = false,
+				
 			}
 			require("lsp-inlayhints").setup(default_config)
 		end,
