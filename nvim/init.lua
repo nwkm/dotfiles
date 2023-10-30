@@ -9,7 +9,7 @@ require('config.lazy')
 require('config.autocmds')
 
 require('internal.winbar')
-require('internal.cursorword')
+-- require('internal.cursorword')
 
 require('lsp.config')
 require('lsp.setup')
