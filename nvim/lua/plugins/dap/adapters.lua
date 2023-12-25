@@ -129,23 +129,6 @@ map("n", "<Leader>dw", "<CMD>lua require('dapui').float_element('watches', { ent
 map("n", "<Leader>ds", "<CMD>lua require('dapui').float_element('scopes', { enter = true })<CR>", opts)
 map("n", "<Leader>dr", "<CMD>lua require('dapui').float_element('repl', { enter = true })<CR>", opts)
 
--- ╭──────────────────────────────────────────────────────────╮
--- │ Adapters                                                 │
--- ╰──────────────────────────────────────────────────────────╯
--- !DEPRECATED!
--- dap.adapters.node2 = {
---  type = "executable",
--- command = "node",
---args = { vim.fn.stdpath("data") .. "/mason/packages/node-debug2-adapter/out/src/nodeDebug.js" },
---}
-
--- !DEPRECATED!
--- dap.adapters.chrome = {
---   type = "executable",
---   command = "node",
---   args = { vim.fn.stdpath("data") .. "/mason/packages/chrome-debug-adapter/out/src/chromeDebug.js" },
--- }
-
 -- Vscode JS
 require("dap-vscode-js").setup({
   debugger_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter",

@@ -131,10 +131,10 @@ local normal_mode_mappings = {
 
   b = {
     name = 'Buffer',
-    k = { "<Cmd>Bdelete<CR>", "Kill the current buffer" },
-    K = { "<Cmd>Bdelete!<CR>", "Kill the current buffer forcefully"},
-    w = { "<Cmd>Bwipeout<CR>", "Kill every other buffer"},
-    W = { "<Cmd>Bwipeout!<CR>", "Kill every other buffer forcefully"},
+    k = { "<Cmd>Bdelete<CR>", "kill the current buffer" },
+    K = { "<Cmd>Bdelete!<CR>", "kill the current buffer forcefully"},
+    w = { "<Cmd>Bwipeout<CR>", "kill every other buffer"},
+    W = { "<Cmd>Bwipeout!<CR>", "kill every other buffer forcefully"},
   },
 
   c = {
@@ -144,11 +144,11 @@ local normal_mode_mappings = {
     l = { "Line diagnostics" },
     r = { "Rename" },
     R = { "Structural replace" },
-    d = { "<Cmd>TroubleToggle<CR>",                           "Diagnostics" },
-    t = { "<Cmd>LspToggleAutoFormat<CR>",                     "Toggle format on save" },
-    s = { "<Cmd>TroubleToggle loclist<CR>",                   "Location list" },
-    q = { "<Cmd>TroubleToggle quickfix<CR>",                  "Quickfix" },
-    p = { "<Cmd>TroubleToggle lsp_references<CR>",            "Lsp references" },
+    d = { "<Cmd>TroubleToggle<CR>",                           "diagnostics" },
+    t = { "<Cmd>LspToggleAutoFormat<CR>",                     "toggle format on save" },
+    s = { "<Cmd>TroubleToggle loclist<CR>",                   "location list" },
+    q = { "<Cmd>TroubleToggle quickfix<CR>",                  "quickfix" },
+    p = { "<Cmd>TroubleToggle lsp_references<CR>",            "lsp references" },
   },
 
   d = {
@@ -187,11 +187,11 @@ local normal_mode_mappings = {
     },
     l = {
       name = 'Log',
-      a = { "<Cmd>LazyGitFilter<CR>",                                      "Commits"},
-      c = { "<Cmd>LazyGitFilterCurrentFile<CR>",                           "Buffer commits"},
+      a = { "<Cmd>LazyGitFilter<CR>",                                      "commits"},
+      c = { "<Cmd>LazyGitFilterCurrentFile<CR>",                           "buffer commits"},
     },
-    m = { "Blame line" },
-    n = { "<Cmd>Neogit<CR>", "Neogit" },
+    m = { "blame line (full)" },
+    n = { "<Cmd>Neogit<CR>", "neogit" },
     w = {
       name = "Worktree",
       w = "worktrees",
@@ -201,9 +201,9 @@ local normal_mode_mappings = {
 
   p = {
     name = "Project",
-    r = { "<Cmd>lua require('spectre').open_visual({select_word=true})<CR>",     "Refactor" },
-    s = { "<Cmd>SessionManager save_current_session<CR>",            "Save session" },
-    t = { "<Cmd>TodoTrouble<CR>",                                    "Todo" },
+    r = { "<Cmd>lua require('spectre').open_visual({select_word=true})<CR>",     "refactor" },
+    s = { "<Cmd>SessionManager save_current_session<CR>",            "save session" },
+    t = { "<Cmd>TodoTrouble<CR>",                                    "todo" },
   },
 
   r = {
@@ -211,19 +211,19 @@ local normal_mode_mappings = {
     l = "Run Last Test",
     L = "Debug Last Test",
     w = "Run Watch",
-    f = { "<cmd>OverseerRun<cr>", "Run" },
-    p = { "<cmd>OverseerRunCmd<cr>", "Run with Cmd" },
-    t = { "<cmd>OverseerToggle<cr>", "Toggle" },
+    f = { "<cmd>OverseerRun<cr>", "run" },
+    p = { "<cmd>OverseerRunCmd<cr>", "run with cmd" },
+    t = { "<cmd>OverseerToggle<cr>", "toggle" },
   },
 
   t = {
     name = "Tasks",
-    b = { "<cmd>OverseerLoadBundle<CR>", "Load Bundle" },
-    s = { "<cmd>OverseerSaveBundle<CR>", "Save Bundle" },
-    n = { "<cmd>OverseerBuild<CR>", "New Task" },
-    q = { "<cmd>OverseerQuickAction<CR>", "Quick Action" },
-    f = { "<cmd>OverseerTaskAction<CR>", "Task Action" },
-    t = { "<cmd>OverseerToggle<cr>", "Toggle Output" },
+    b = { "<cmd>OverseerLoadBundle<CR>", "load bundle" },
+    s = { "<cmd>OverseerSaveBundle<CR>", "save bundle" },
+    n = { "<cmd>OverseerBuild<CR>", "new task" },
+    q = { "<cmd>OverseerQuickAction<CR>", "quick action" },
+    f = { "<cmd>OverseerTaskAction<CR>", "task action" },
+    t = { "<cmd>OverseerToggle<cr>", "toggle output" },
   }
 }
 
