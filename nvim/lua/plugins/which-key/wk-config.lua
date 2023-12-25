@@ -145,7 +145,6 @@ local normal_mode_mappings = {
     r = { "Rename" },
     R = { "Structural replace" },
     d = { "<Cmd>TroubleToggle<CR>",                           "Diagnostics" },
-    W = { "<Cmd>Telescope diagnostics wrap_results=true<CR>", "Workspace diagnostics (Telescope)" },
     t = { "<Cmd>LspToggleAutoFormat<CR>",                     "Toggle format on save" },
     s = { "<Cmd>TroubleToggle loclist<CR>",                   "Location list" },
     q = { "<Cmd>TroubleToggle quickfix<CR>",                  "Quickfix" },
@@ -168,23 +167,11 @@ local normal_mode_mappings = {
     v = { 'log variable' },
     V = { 'log variable above' },
     w = { 'watches' },
-    d = { '<Cmd>Telescope dap configurations<CR>', 'configurations' },
-    f = { '<Cmd>Telescope dap list_breakpoints<CR>', 'all breakpoints' }
   },
 
   g = {
     name = 'Git',
-    a = { '<Cmd>!git add %:p<CR>',                                              'add current' },
-    A = { '<Cmd>!git add .<CR>',                                                'add all' },
     b = { '<Cmd>lua require("internal.blame").open()<CR>',                      'blame' },
-    c = {
-      name = 'Conflict',
-      b = {'<Cmd>GitConflictChooseBoth<CR>',                                    'choose both'},
-      n = {'<Cmd>GitConflictNextConflict<CR>',                                  'move to next conflict'},
-      o = {'<Cmd>GitConflictChooseOurs<CR>',                                    'choose ours'},
-      p = {'<Cmd>GitConflictPrevConflict<CR>',                                  'move to prev conflict'},
-      t = {'<Cmd>GitConflictChooseTheirs<CR>',                                  'choose theirs'},
-    },
     d = { '<Cmd>lua require("plugins.git.git-diffview").toggle_file_history()<CR>', 'diff file' },
     g = { '<Cmd>LazyGit<CR>',                                                   'lazygit' },
     h = {
@@ -205,16 +192,6 @@ local normal_mode_mappings = {
     },
     m = { "Blame line" },
     n = { "<Cmd>Neogit<CR>", "Neogit" },
-    s = { "<Cmd>lua require('plugins.git.git-diffview').toggle_status()<CR>", "Status" },
-    -- n = { ":!git checkout -b ", "Checkout New Branch" },
-    -- o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    -- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    -- 
-    -- f = { "<cmd>Telescope git_bcommits<cr>", "Checkout buffer commit" },
-    -- d = {
-    --   "<cmd>Gitsigns diffthis HEAD<cr>",
-    --   "Diff",
-    -- },
     w = {
       name = "Worktree",
       w = "worktrees",
@@ -222,45 +199,13 @@ local normal_mode_mappings = {
     }
   },
 
-  f = {
-    name = "Git (Telescope)",
-    b = { "<Cmd>Telescope git_branches<CR>", "branches" },
-    s = { "<Cmd>Telecope git_status<CR>",  "status" },
-    c = { "<Cmd>lua require('plugins.telescope.pickers').my_git_commits()<CR>",  "commits"},
-    u = { "<Cmd>lua require('plugins.telescope.pickers').my_git_bcommits()<CR>", "buffer commits"},
-  },
-
   p = {
     name = "Project",
-    f = { "<Cmd>lua require('plugins.telescope.pickers').project_files({ default_text = vim.fn.expand('<cword>'), initial_mode = 'normal' })<CR>", 'File' },
-    w = { "<Cmd>lua require('telescope.builtin').grep_string({ initial_mode = 'normal' })", 'Word' },
-    l = { "<Cmd>lua require'telescope'.extensions.repo.cached_list{file_ignore_patterns={'/%.cache/', '/%.cargo/', '/%.local/', '/%timeshift/', '/usr/', '/srv/', '/%.oh%-my%-zsh', '/Library/', '/%.cocoapods/'}}<CR>", 'List' },
     r = { "<Cmd>lua require('spectre').open_visual({select_word=true})<CR>",     "Refactor" },
     s = { "<Cmd>SessionManager save_current_session<CR>",            "Save session" },
     t = { "<Cmd>TodoTrouble<CR>",                                    "Todo" },
   },
 
-  s = {
-    name = "Search",
-    -- c = { '<Cmd>Telescope colorscheme<CR>',                              'color schemes' },
-    c = { "<Cmd>Telescope commands<CR>",                                 "Commands" },
-    d = { '<Cmd>lua require("plugins.telescope.pickers").edit_neovim()<CR>', "Dotfiles" },
-    f = { "<Cmd>lua require('telescope.builtin').find_files()<CR>",      "Find files" },
-    t = { "<Cmd>Telescope live_grep <CR>",                               "Find texts" },
-    h = { "<Cmd>Telescope help_tags<CR>",                                "Find Helps" },
-    m = { "<Cmd>Telescope man_pages<CR>",                                "Man pages" },
-    r = { "<Cmd>Telescope registers<CR>",                                "Registers" },
-    k = { "<Cmd>Telescope keymaps<CR>",                                  "Keymaps" },
-    y = { '<Cmd>Telescope files hidden=true<CR>',                     "Recent files" },
-    s = { '<Cmd>Telescope search_history theme=dropdown<CR>',            "Histories" },
-    H = { '<Cmd>lua require("plugins.telescope.pickers").command_history()<CR>', "Command histories" },
-  },
-
-  -- t = {
-  --   name = 'Table Mode',
-  --   m = { 'toggle' },
-  --   t = { 'tableize' },
-  -- },
   r = {
     name = "Run",
     l = "Run Last Test",

@@ -8,6 +8,7 @@ return {
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
     lazy = false,
+    enabled = false,
     branch = '0.1.x',
     cmd = 'Telescope',
     config = function()

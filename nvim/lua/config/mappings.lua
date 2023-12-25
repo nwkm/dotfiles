@@ -108,8 +108,8 @@ map("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], silent)
 map("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], silent)
 
 -- Telescope
-map("n", "<C-p>", "<CMD>lua require('plugins.telescope.pickers').project_files({ previewer = false })<CR>")
-map("n", "<S-p>", "<CMD>lua require('plugins.telescope.multi-rg')()<CR>")
+-- map("n", "<C-p>", "<CMD>lua require('plugins.telescope.pickers').project_files({ previewer = false })<CR>")
+-- map("n", "<S-p>", "<CMD>lua require('plugins.telescope.multi-rg')()<CR>")
 
 -- Toggleterm.nvim keymap
 map("n", [[<C-\>]], ":ToggleTerm<CR>", silent)
