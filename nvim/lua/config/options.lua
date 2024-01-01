@@ -65,9 +65,6 @@ vim.opt.fillchars:append('foldsep: ');
 vim.opt.fillchars:append('foldclose:');
 vim.opt.listchars:append({ tab = '→·', eol = '¬', trail = '·' });
 
-
--- set listchars=tab:»·,eol:¬,extends:>,precedes:<,trail:·
-
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
