@@ -58,8 +58,25 @@ which_key.register(visual_mode_mappings, visual_opts)
 vim.cmd [[setlocal shiftwidth=2]]
 vim.cmd [[setlocal tabstop=2]]
 
-local config = require("plugins.dap.configurations")
-if not config then
-  return
-end
 config.config_java()
+local ok_dap, dap = pcall(require, "dap")
+
+if not ok_dap then
+	return
+end
+
+dap.configurations.java = {
+  {
+    name = "Debug (Attach) - Remote",
+    type = "java",
+    request = "attach",
+    hostName = "127.0.0.1",
+    port = 5005,
+  },
+  {
+    name = "Debug Non-Project class",
+    type = "java",
+    request = "launch",
+    program = "${file}",
+  },
+}
