@@ -125,4 +125,14 @@ function M.workdirs(opts)
   fzf_lua.fzf_exec(fzf_fn, opts)
 end
 
+function M.live_grep_cwd()
+  fzf_lua.fzf_exec("fd --type d -H --exclude=.git", {
+    actions = {
+      ["default"] = function(sel, opts)
+        fzf_lua.live_grep({ cwd = sel[1] })
+      end,
+    },
+  })
+end
+
 return M

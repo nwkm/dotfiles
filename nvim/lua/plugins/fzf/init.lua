@@ -1,6 +1,7 @@
 return {
 	"ibhagwan/fzf-lua",
-	lazy = false,
+	-- lazy = false,
+	event = 'VeryLazy',
 	-- optional for icon support
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	init = function()
@@ -21,5 +22,6 @@ return {
   	    end
   	    return { winopts = { height = h, width = 0.60, row = 0.40 } }
   	  end)
+
 	end
 }

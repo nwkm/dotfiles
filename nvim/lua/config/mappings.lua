@@ -32,11 +32,13 @@ map("n", "<leader>q", ":q<CR>", silent)
 -- Quick write
 map("n", "<leader>w", ":w<CR>", silent)
 
--- Resize splits with arrow keys
-map("n", "<A-up>", ":vertical resize +1<CR>", silent)
-map("n", "<A-down>", ":vertical resize -1<CR>", silent)
-map("n", "<A-right>", ":resize +1<CR>", silent)
-map("n", "<A-left>", ":resize -1<CR>", silent)
+-- Splits
+map('n', '<leader>v', ':vsplit<CR>', { desc = 'split right' })
+map('n', '<leader>s', ':split<CR>', { desc = 'split below' })
+map("n", "<leader>=", ":vertical resize +5<CR>", silent)
+map("n", "<leader>-", ":vertical resize -5<CR>", silent)
+map("n", "<leader>>", ":resize +5<CR>", silent)
+map("n", "<leader><", ":resize -5<CR>", silent)
 
 -- Keep visual mode indenting
 map("v", "<", "<gv", silent)

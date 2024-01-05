@@ -1,5 +1,14 @@
 local u = require('utils')
 
+local function show_macro_recording()
+    local recording_register = vim.fn.reg_recording()
+    if recording_register == "" then
+        return ""
+    else
+        return "Recording @" .. recording_register
+    end
+end
+
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
@@ -38,19 +47,23 @@ return {
                     },
                 },
                 'filename',
+                {
+                    "macro-recording",
+                    fmt = show_macro_recording,
+                },
             },
             lualine_x = {
-                {
-                    function() return require("noice").api.status.command.get() end,
-                    cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-                    color = u.fg("Statement"),
-                },
+                -- {
+                --     function() return require("noice").api.status.command.get() end,
+                --     cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+                --     color = u.fg("Statement"),
+                -- },
                   -- stylua: ignore
-                {
-                    function() return require("noice").api.status.mode.get() end,
-                    cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-                    color = u.fg("Constant"),
-                },
+                -- {
+                --     function() return require("noice").api.status.mode.get() end,
+                --     cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+                --     color = u.fg("Constant"),
+                -- },
                   -- stylua: ignore
                 {
                     function() return "  " .. require("dap").status() end,
@@ -69,5 +82,5 @@ return {
             'nvim-tree',
             'toggleterm'
         }
-    },
+    }
 }

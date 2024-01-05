@@ -1,6 +1,4 @@
 return {
-    -- nvim-notify
-    {
         'rcarriga/nvim-notify',
         event = {
             'BufReadPost',
@@ -14,5 +12,4 @@ return {
             notify.setup(opts)
             vim.notify = notify
         end,
-    },
 }

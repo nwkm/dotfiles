@@ -17,6 +17,6 @@ return {
     },
     event = "InsertEnter",
     config = function()
-		    require("plugins.cmp.cmp-config")
+		require("plugins.cmp.cmp-config")
     end,
 }

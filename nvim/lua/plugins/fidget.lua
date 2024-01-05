@@ -7,6 +7,12 @@ return {
 			return
 		end
 
-		fidget.setup({})
+		fidget.setup({
+			integration = {
+				["nvim-tree"] = {
+					enable = false
+				},
+			},
+		})
 	end
 }

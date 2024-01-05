@@ -91,12 +91,12 @@ local normal_mode_mappings = {
   ['7'] = 'which_key_ignore',
   ['8'] = 'which_key_ignore',
   ['9'] = 'which_key_ignore',
-
-  -- single
-  ['='] = { '<Cmd>vertical resize +5<CR>',                      'resize +5' },
-  ['-'] = { '<Cmd>vertical resize -5<CR>',                      'resize -5' },
-  ['v'] = { '<C-W>v',                                           'split right' },
-  ['V'] = { '<C-W>s',                                           'split below' },
+  ['='] = 'which_key_ignore',
+  ['-'] = 'which_key_ignore',
+  ['<'] = 'which_key_ignore',
+  ['>'] = 'which_key_ignore',
+  ['s'] = 'which_key_ignore',
+  ['v'] = 'which_key_ignore',
 
   ['e'] = 'Explorer',
   ['q'] = 'Quit the current file',

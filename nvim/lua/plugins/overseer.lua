@@ -1,6 +1,5 @@
 return {
 	"stevearc/overseer.nvim",
-  lazy = false,
 	config = function()
 		local status_ok, see = pcall(require, "overseer")
 		if not status_ok then

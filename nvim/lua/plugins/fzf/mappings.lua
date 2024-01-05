@@ -30,8 +30,6 @@ local map_fzf = function(mode, key, f, options, buffer)
 end
   
 -- mappings
-map_fzf("n", "<F1>", "help_tags", { desc = "help tags" })
-map_fzf("n", "<leader>fM", "man_pages", { desc = "man pages" })
 
 map_fzf("n", "<C-P>", "files", {
   desc = "find files",
@@ -52,6 +50,8 @@ map_fzf("n", "<C-O>", "workdirs", {
     row    = 0.40,
   }
 })
+map_fzf("n", "<F1>", "help_tags", { desc = "help tags" })
+map_fzf("n", "<leader>fM", "man_pages", { desc = "man pages" })
 map_fzf("n", "<leader>fP", "profiles", { desc = "fzf-lua profiles" })
 map_fzf("n", "<leader>f?", "builtin", { desc = "builtin commands" })
 map_fzf("n", "<leader>;", "buffers", { desc = "Fzf buffers" })
@@ -86,6 +86,7 @@ map_fzf("n", "<leader>fb", "blines", { desc = "fuzzy buffer lines" })
 map_fzf("n", "<leader>fB", "lgrep_curbuf", { desc = "live grep (buffer)", prompt = "Buffer❯ " })
 map_fzf("n", "<leader>fl", "live_grep", { desc = "live grep (project)" })
 map_fzf("n", "<leader>fL", "live_grep", { desc = "live grep resume", resume = true })
+map_fzf("n", "<leader>fd", "live_grep_cwd", { desc = "live grep (directories)" })
 
 map_fzf("n", "<leader>f3", "blines", function()
   return {

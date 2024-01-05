@@ -27,7 +27,7 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
-		lazy = true,
+		-- lazy = true,
 		enabled = true,
 		event = "BufRead",
 		config = function()
@@ -40,28 +40,31 @@ return {
 			"<Leader>gwc",
 			"<Leader>gww",
 		},
+		-- lazy = true,
 		config = function()
 			require("plugins.git.git-worktree")
 		end,
 	},
 	{
 		"akinsho/git-conflict.nvim",
-		lazy = false,
+		-- lazy = false,
+		event = "VeryLazy",
 		config = function()
 			require("plugins.git.git-conflict")
 		end,
 	},
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim"
-    },
-    lazy = false,
-    config = true,
-  },
+  	{
+    	"NeogitOrg/neogit",
+    	dependencies = {
+      	"nvim-lua/plenary.nvim",
+      	"sindrets/diffview.nvim"
+    	},
+    	-- lazy = true,
+    	config = true,
+  	},
 	{
 		"kdheepak/lazygit.nvim",
+		-- lazy = true,
 		cmd = {
 			"LazyGit",
 			"LazyGitCurrentFile",
