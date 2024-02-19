@@ -91,12 +91,12 @@ local normal_mode_mappings = {
   ['7'] = 'which_key_ignore',
   ['8'] = 'which_key_ignore',
   ['9'] = 'which_key_ignore',
-
-  -- single
-  ['='] = { '<Cmd>vertical resize +5<CR>',                      'resize +5' },
-  ['-'] = { '<Cmd>vertical resize -5<CR>',                      'resize -5' },
-  ['v'] = { '<C-W>v',                                           'split right' },
-  ['V'] = { '<C-W>s',                                           'split below' },
+  ['='] = 'which_key_ignore',
+  ['-'] = 'which_key_ignore',
+  ['<'] = 'which_key_ignore',
+  ['>'] = 'which_key_ignore',
+  ['s'] = 'which_key_ignore',
+  ['v'] = 'which_key_ignore',
 
   ['e'] = 'Explorer',
   ['q'] = 'Quit the current file',
@@ -131,10 +131,10 @@ local normal_mode_mappings = {
 
   b = {
     name = 'Buffer',
-    k = { "<Cmd>Bdelete<CR>", "Kill the current buffer" },
-    K = { "<Cmd>Bdelete!<CR>", "Kill the current buffer forcefully"},
-    w = { "<Cmd>Bwipeout<CR>", "Kill every other buffer"},
-    W = { "<Cmd>Bwipeout!<CR>", "Kill every other buffer forcefully"},
+    k = { "<Cmd>Bdelete<CR>", "kill the current buffer" },
+    K = { "<Cmd>Bdelete!<CR>", "kill the current buffer forcefully"},
+    w = { "<Cmd>Bwipeout<CR>", "kill every other buffer"},
+    W = { "<Cmd>Bwipeout!<CR>", "kill every other buffer forcefully"},
   },
 
   c = {
@@ -144,12 +144,11 @@ local normal_mode_mappings = {
     l = { "Line diagnostics" },
     r = { "Rename" },
     R = { "Structural replace" },
-    d = { "<Cmd>TroubleToggle<CR>",                           "Diagnostics" },
-    W = { "<Cmd>Telescope diagnostics wrap_results=true<CR>", "Workspace diagnostics (Telescope)" },
-    t = { "<Cmd>LspToggleAutoFormat<CR>",                     "Toggle format on save" },
-    s = { "<Cmd>TroubleToggle loclist<CR>",                   "Location list" },
-    q = { "<Cmd>TroubleToggle quickfix<CR>",                  "Quickfix" },
-    p = { "<Cmd>TroubleToggle lsp_references<CR>",            "Lsp references" },
+    d = { "<Cmd>TroubleToggle<CR>",                           "diagnostics" },
+    t = { "<Cmd>LspToggleAutoFormat<CR>",                     "toggle format on save" },
+    s = { "<Cmd>TroubleToggle loclist<CR>",                   "location list" },
+    q = { "<Cmd>TroubleToggle quickfix<CR>",                  "quickfix" },
+    p = { "<Cmd>TroubleToggle lsp_references<CR>",            "lsp references" },
   },
 
   d = {
@@ -168,23 +167,11 @@ local normal_mode_mappings = {
     v = { 'log variable' },
     V = { 'log variable above' },
     w = { 'watches' },
-    d = { '<Cmd>Telescope dap configurations<CR>', 'configurations' },
-    f = { '<Cmd>Telescope dap list_breakpoints<CR>', 'all breakpoints' }
   },
 
   g = {
     name = 'Git',
-    a = { '<Cmd>!git add %:p<CR>',                                              'add current' },
-    A = { '<Cmd>!git add .<CR>',                                                'add all' },
     b = { '<Cmd>lua require("internal.blame").open()<CR>',                      'blame' },
-    c = {
-      name = 'Conflict',
-      b = {'<Cmd>GitConflictChooseBoth<CR>',                                    'choose both'},
-      n = {'<Cmd>GitConflictNextConflict<CR>',                                  'move to next conflict'},
-      o = {'<Cmd>GitConflictChooseOurs<CR>',                                    'choose ours'},
-      p = {'<Cmd>GitConflictPrevConflict<CR>',                                  'move to prev conflict'},
-      t = {'<Cmd>GitConflictChooseTheirs<CR>',                                  'choose theirs'},
-    },
     d = { '<Cmd>lua require("plugins.git.git-diffview").toggle_file_history()<CR>', 'diff file' },
     g = { '<Cmd>LazyGit<CR>',                                                   'lazygit' },
     h = {
@@ -200,21 +187,11 @@ local normal_mode_mappings = {
     },
     l = {
       name = 'Log',
-      a = { "<Cmd>LazyGitFilter<CR>",                                      "Commits"},
-      c = { "<Cmd>LazyGitFilterCurrentFile<CR>",                           "Buffer commits"},
+      a = { "<Cmd>LazyGitFilter<CR>",                                      "commits"},
+      c = { "<Cmd>LazyGitFilterCurrentFile<CR>",                           "buffer commits"},
     },
-    m = { "Blame line" },
-    n = { "<Cmd>Neogit<CR>", "Neogit" },
-    s = { "<Cmd>lua require('plugins.git.git-diffview').toggle_status()<CR>", "Status" },
-    -- n = { ":!git checkout -b ", "Checkout New Branch" },
-    -- o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    -- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    -- 
-    -- f = { "<cmd>Telescope git_bcommits<cr>", "Checkout buffer commit" },
-    -- d = {
-    --   "<cmd>Gitsigns diffthis HEAD<cr>",
-    --   "Diff",
-    -- },
+    m = { "blame line (full)" },
+    n = { "<Cmd>Neogit<CR>", "neogit" },
     w = {
       name = "Worktree",
       w = "worktrees",
@@ -222,63 +199,31 @@ local normal_mode_mappings = {
     }
   },
 
-  f = {
-    name = "Git (Telescope)",
-    b = { "<Cmd>Telescope git_branches<CR>", "branches" },
-    s = { "<Cmd>Telecope git_status<CR>",  "status" },
-    c = { "<Cmd>lua require('plugins.telescope.pickers').my_git_commits()<CR>",  "commits"},
-    u = { "<Cmd>lua require('plugins.telescope.pickers').my_git_bcommits()<CR>", "buffer commits"},
-  },
-
   p = {
     name = "Project",
-    f = { "<Cmd>lua require('plugins.telescope.pickers').project_files({ default_text = vim.fn.expand('<cword>'), initial_mode = 'normal' })<CR>", 'File' },
-    w = { "<Cmd>lua require('telescope.builtin').grep_string({ initial_mode = 'normal' })", 'Word' },
-    l = { "<Cmd>lua require'telescope'.extensions.repo.cached_list{file_ignore_patterns={'/%.cache/', '/%.cargo/', '/%.local/', '/%timeshift/', '/usr/', '/srv/', '/%.oh%-my%-zsh', '/Library/', '/%.cocoapods/'}}<CR>", 'List' },
-    r = { "<Cmd>lua require('spectre').open_visual({select_word=true})<CR>",     "Refactor" },
-    s = { "<Cmd>SessionManager save_current_session<CR>",            "Save session" },
-    t = { "<Cmd>TodoTrouble<CR>",                                    "Todo" },
+    r = { "<Cmd>lua require('spectre').open_visual({select_word=true})<CR>",     "refactor" },
+    s = { "<Cmd>SessionManager save_current_session<CR>",            "save session" },
+    t = { "<Cmd>TodoTrouble<CR>",                                    "todo" },
   },
 
-  s = {
-    name = "Search",
-    -- c = { '<Cmd>Telescope colorscheme<CR>',                              'color schemes' },
-    c = { "<Cmd>Telescope commands<CR>",                                 "Commands" },
-    d = { '<Cmd>lua require("plugins.telescope.pickers").edit_neovim()<CR>', "Dotfiles" },
-    f = { "<Cmd>lua require('telescope.builtin').find_files()<CR>",      "Find files" },
-    t = { "<Cmd>Telescope live_grep <CR>",                               "Find texts" },
-    h = { "<Cmd>Telescope help_tags<CR>",                                "Find Helps" },
-    m = { "<Cmd>Telescope man_pages<CR>",                                "Man pages" },
-    r = { "<Cmd>Telescope registers<CR>",                                "Registers" },
-    k = { "<Cmd>Telescope keymaps<CR>",                                  "Keymaps" },
-    y = { '<Cmd>Telescope files hidden=true<CR>',                     "Recent files" },
-    s = { '<Cmd>Telescope search_history theme=dropdown<CR>',            "Histories" },
-    H = { '<Cmd>lua require("plugins.telescope.pickers").command_history()<CR>', "Command histories" },
-  },
-
-  -- t = {
-  --   name = 'Table Mode',
-  --   m = { 'toggle' },
-  --   t = { 'tableize' },
-  -- },
   r = {
     name = "Run",
     l = "Run Last Test",
     L = "Debug Last Test",
     w = "Run Watch",
-    f = { "<cmd>OverseerRun<cr>", "Run" },
-    p = { "<cmd>OverseerRunCmd<cr>", "Run with Cmd" },
-    t = { "<cmd>OverseerToggle<cr>", "Toggle" },
+    f = { "<cmd>OverseerRun<cr>", "run" },
+    p = { "<cmd>OverseerRunCmd<cr>", "run with cmd" },
+    t = { "<cmd>OverseerToggle<cr>", "toggle" },
   },
 
   t = {
     name = "Tasks",
-    b = { "<cmd>OverseerLoadBundle<CR>", "Load Bundle" },
-    s = { "<cmd>OverseerSaveBundle<CR>", "Save Bundle" },
-    n = { "<cmd>OverseerBuild<CR>", "New Task" },
-    q = { "<cmd>OverseerQuickAction<CR>", "Quick Action" },
-    f = { "<cmd>OverseerTaskAction<CR>", "Task Action" },
-    t = { "<cmd>OverseerToggle<cr>", "Toggle Output" },
+    b = { "<cmd>OverseerLoadBundle<CR>", "load bundle" },
+    s = { "<cmd>OverseerSaveBundle<CR>", "save bundle" },
+    n = { "<cmd>OverseerBuild<CR>", "new task" },
+    q = { "<cmd>OverseerQuickAction<CR>", "quick action" },
+    f = { "<cmd>OverseerTaskAction<CR>", "task action" },
+    t = { "<cmd>OverseerToggle<cr>", "toggle output" },
   }
 }
 

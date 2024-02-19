@@ -32,15 +32,20 @@ map("n", "<leader>q", ":q<CR>", silent)
 -- Quick write
 map("n", "<leader>w", ":w<CR>", silent)
 
--- Resize splits with arrow keys
-map("n", "<A-up>", ":vertical resize +1<CR>", silent)
-map("n", "<A-down>", ":vertical resize -1<CR>", silent)
-map("n", "<A-right>", ":resize +1<CR>", silent)
-map("n", "<A-left>", ":resize -1<CR>", silent)
+-- Splits
+map('n', '<leader>v', ':vsplit<CR>', { desc = 'split right' })
+map('n', '<leader>s', ':split<CR>', { desc = 'split below' })
+map("n", "<leader>=", ":vertical resize +5<CR>", silent)
+map("n", "<leader>-", ":vertical resize -5<CR>", silent)
+map("n", "<leader>>", ":resize +5<CR>", silent)
+map("n", "<leader><", ":resize -5<CR>", silent)
 
 -- Keep visual mode indenting
 map("v", "<", "<gv", silent)
 map("v", ">", ">gv", silent)
+
+map("n", "<C-d>", "10jzz", silent)
+map("n", "<C-u>", "10kzz", silent)
 
 -- Case change in visual mode
 map("v", "`", "u", silent)
@@ -53,6 +58,11 @@ map("n", "<CR>", ":noh<CR><CR>", silent)
 map("n", "<A-l>", ":bnext<CR>", silent)
 map("n", "<A-h>", ":bprev<CR>", silent)
 
+-- Tabs
+map("n", "te", ":tabedit")
+map("n", "<tab>", ":tabnext<Return>", silent)
+map("n", "<s-tab>", ":tabprev<Return>", silent)
+
 -- Don't yank on delete char
 map("n", "x", '"_x', silent)
 map("n", "X", '"_X', silent)
@@ -63,21 +73,14 @@ map("v", "X", '"_X', silent)
 map("v", "p", '"_dP', silent)
 
 -- Avoid issues because of remapping <c-a> and <c-x> below
-vim.cmd [[
-  nnoremap <Plug>SpeedDatingFallbackUp <c-a>
-  nnoremap <Plug>SpeedDatingFallbackDown <c-x>
-]]
+-- vim.cmd [[
+--   nnoremap <Plug>SpeedDatingFallbackUp <c-a>
+--   nnoremap <Plug>SpeedDatingFallbackDown <c-x>
+-- ]]
 
 -- Quickfix
 map("n", "<Space>,", ":cp<CR>", silent)
 map("n", "<Space>.", ":cn<CR>", silent)
-
--- Toggle quicklist
--- map("n", "<Leader>q", "<cmd>lua require('utils').toggle_quicklist()<CR>", silent)
-
--- Manually invoke speeddating in case switch.vim didn't work
--- map("n", "<C-a>", ":if !switch#Switch() <bar> call speeddating#increment(v:count1) <bar> endif<CR>", silent)
--- map("n", "<C-x>", ":if !switch#Switch({'reverse': 1}) <bar> call speeddating#increment(-v:count1) <bar> endif<CR>", silent)
 
 -- Open links under cursor in browser with gx
 if vim.fn.has('macunix') == 1 then
@@ -106,10 +109,6 @@ map("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>]], silent)
 map("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], silent)
 map("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], silent)
 map("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], silent)
-
--- Telescope
-map("n", "<C-p>", "<CMD>lua require('plugins.telescope.pickers').project_files({ previewer = false })<CR>")
-map("n", "<S-p>", "<CMD>lua require('plugins.telescope.multi-rg')()<CR>")
 
 -- Toggleterm.nvim keymap
 map("n", [[<C-\>]], ":ToggleTerm<CR>", silent)
