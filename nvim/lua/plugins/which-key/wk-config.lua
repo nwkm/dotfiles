@@ -98,7 +98,6 @@ local normal_mode_mappings = {
   ['s'] = 'which_key_ignore',
   ['v'] = 'which_key_ignore',
 
-  ['e'] = 'Explorer',
   ['q'] = 'Quit the current file',
   ['Q'] = 'Quit neovim',
   ['w'] = 'Save the current file',

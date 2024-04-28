@@ -59,9 +59,10 @@ map("n", "<A-l>", ":bnext<CR>", silent)
 map("n", "<A-h>", ":bprev<CR>", silent)
 
 -- Tabs
-map("n", "te", ":tabedit")
+map("n", "te", ":tabedit<CR>")
 map("n", "<tab>", ":tabnext<Return>", silent)
 map("n", "<s-tab>", ":tabprev<Return>", silent)
+
 
 -- Don't yank on delete char
 map("n", "x", '"_x', silent)
@@ -126,3 +127,5 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+map('n', '-', '<cmd>Oil --float<cr>', { desc = 'Open Parent Directory' })

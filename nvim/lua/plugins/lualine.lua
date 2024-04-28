@@ -9,6 +9,7 @@ local function show_macro_recording()
     end
 end
 
+
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
@@ -46,6 +47,12 @@ return {
                         hint = nw.icons.diagnostics.Hint .. ' ',
                     },
                 },
+        {
+          function ()            
+            local statusline = require('arrow.statusline')
+            return statusline.text_for_statusline_with_icons()
+          end
+        },
                 'filename',
                 {
                     "macro-recording",

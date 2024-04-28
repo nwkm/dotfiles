@@ -117,7 +117,6 @@ local default_opts = {
     rg_opts = '--hidden --column --line-number --no-heading --color=always --smart-case -g "!node_modules/" -g "!idea" -g "!.vscode" -g "!venv" -g "!.mypy_cache" -g "!build" -g "!dist"  -g "!__pycache__" -g "!tags" -g "!*.git" -g "!package-lock.json" -g "!.environ" -g "!*pot"',
     fzf_opts = {
       ["--no-separator"] = false,
-      ["--history"] = vim.fn.shellescape(vim.fn.stdpath("data") .. "/fzf_search_hist"),
     },
   },
   git = {
