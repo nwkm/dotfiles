@@ -58,7 +58,7 @@ which_key.register(visual_mode_mappings, visual_opts)
 vim.cmd [[setlocal shiftwidth=2]]
 vim.cmd [[setlocal tabstop=2]]
 
-config.config_java()
+-- config.config_java()
 local ok_dap, dap = pcall(require, "dap")
 
 if not ok_dap then

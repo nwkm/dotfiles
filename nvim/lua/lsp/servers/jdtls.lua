@@ -202,17 +202,21 @@ local config = {
       configuration = {
         runtimes = {
           {
+            name = "JavaSE-21",
+            path = home .. "/.sdkman/candidates/java/21.0.2-graalce",
+          },
+          {
             name = "JavaSE-17",
             path = home .. "/.jenv/versions/17.0.7",
           },
-          {
-            name = "JavaSE-11",
-            path = home .. "/.jenv/versions/11.0.5",
-          },
-          {
-            name = "JavaSE-1.8",
-            path = home .. "/.jenv/versions/1.8.0.232"
-          },
+          -- {
+          --   name = "JavaSE-11",
+          --   path = home .. "/.jenv/versions/11.0.5",
+          -- },
+          -- {
+          --   name = "JavaSE-1.8",
+          --   path = home .. "/.jenv/versions/1.8.0.232"
+          -- },
         }
       }
     }
