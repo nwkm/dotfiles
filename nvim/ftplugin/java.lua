@@ -1,12 +1,32 @@
-local config = require("lsp.servers.jdtls").make_jdtls_config()
-require("jdtls").start_or_attach(config)
+if not pcall(require, "jdtls") then
+  return
+end
 
-vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
-vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)"
-vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()"
--- vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
-vim.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
--- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
+local root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" })
+
+local config = {
+  -- https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
+  cmd = {
+    "java",
+    "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+    "-Dosgi.bundles.defaultStartLevel=4",
+    "-Declipse.product=org.eclipse.jdt.ls.core.product",
+    "-Dlog.protocol=true",
+    "-Dlog.level=ALL",
+    "-Xms1g",
+    "--add-modules=ALL-SYSTEM",
+    "--add-opens", "java.base/java.util=ALL-UNNAMED",
+    "--add-opens", "java.base/java.lang=ALL-UNNAMED",
+    "-jar", vim.fn.glob(vim.fn.stdpath("data") ..
+    "/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+    "-configuration", vim.fn.stdpath("data") .. "/mason/packages/jdtls/config_linux",
+    "-data", (root_dir or vim.loop.cwd()) .. "/.jdtls",
+  },
+  root_dir = root_dir
+}
+
+-- `:help vim.lsp.start_client`
+require("jdtls").start_or_attach(config)
 
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
@@ -55,10 +75,11 @@ local visual_mode_mappings = {
 which_key.register(normal_mode_mappings, normal_opts)
 which_key.register(visual_mode_mappings, visual_opts)
 
-vim.cmd [[setlocal shiftwidth=2]]
-vim.cmd [[setlocal tabstop=2]]
+-- vim.cmd [[setlocal shiftwidth=2]]
+-- vim.cmd [[setlocal tabstop=2]]
+vim.bo.shiftwidth  = 4
+vim.bo.tabstop  = 4
 
--- config.config_java()
 local ok_dap, dap = pcall(require, "dap")
 
 if not ok_dap then

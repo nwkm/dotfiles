@@ -1,6 +1,6 @@
 return {
 	"ibhagwan/fzf-lua",
-	event = 'VeryLazy',
+	-- event = 'VeryLazy',
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	init = function()
 		require("plugins.fzf.mappings")
