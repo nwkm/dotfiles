@@ -17,8 +17,7 @@ local config = {
     "--add-modules=ALL-SYSTEM",
     "--add-opens", "java.base/java.util=ALL-UNNAMED",
     "--add-opens", "java.base/java.lang=ALL-UNNAMED",
-    "-jar", vim.fn.glob(vim.fn.stdpath("data") ..
-    "/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+    "-jar", vim.fn.glob(vim.fn.stdpath("data") ..  "/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
     "-configuration", vim.fn.stdpath("data") .. "/mason/packages/jdtls/config_linux",
     "-data", (root_dir or vim.loop.cwd()) .. "/.jdtls",
   },

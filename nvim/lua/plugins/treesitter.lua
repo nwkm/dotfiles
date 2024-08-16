@@ -41,7 +41,7 @@ return {
         indent = {
             enable = false
         },
-        
+      
         rainbow = {
             enable = true,
             extended_mode = true,
