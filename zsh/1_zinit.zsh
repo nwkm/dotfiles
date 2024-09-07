@@ -30,14 +30,16 @@ zinit light-mode depth"1" for \
 
 zinit light romkatv/powerlevel10k
 
+zinit light zsh-users/zsh-autosuggestions
+
 # Completion enhancements
 zinit wait lucid depth"1" for \
       atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
       zdharma-continuum/fast-syntax-highlighting \
       blockf \
       zsh-users/zsh-completions \
-      atload"!_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions
+      # atload"!_zsh_autosuggest_start" \
+      # zsh-users/zsh-autosuggestions
 
 # FZF: fuzzy finder
 zinit ice wait lucid from"gh-r" nocompile src'key-bindings.zsh' sbin \
@@ -62,7 +64,7 @@ zinit cdreplay -q
 
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:complete:*:options' sort false
