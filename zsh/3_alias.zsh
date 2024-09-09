@@ -7,7 +7,7 @@ alias dkd='docker-compose down -v'
 alias lzd='lazydocker'
 alias code='open -a /Applications/Visual\ Studio\ Code.app'
 alias pip='pip3'
-alias ll='ls -l'
+alias ll='ls -l --color=auto'
 alias l='ll -a'
 alias cat='bat'
 alias we='curl wttr.in/Choisy-le-Roi'  #current, narrow, quiet, no Follow

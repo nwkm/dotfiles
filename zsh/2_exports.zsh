@@ -17,6 +17,10 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export TMUXP_CONFIGDIR=$HOME/.config/tmuxp
 
 
+# Homebrew for linux
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
@@ -72,3 +76,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
+
