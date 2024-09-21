@@ -59,6 +59,10 @@ bind C-t source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
 bind -n M-Right next-window
 bind -n M-Left previous-window
 
+# navigate sessions
+bind -n M-p switch-client -p
+bind -n M-n switch-client -n
+
 # bind resizing of panes to arrows (resizes by steps of 5 lines/columns)
 bind Left resize-pane -L 5
 bind Right resize-pane -R 5
@@ -66,7 +70,7 @@ bind Down resize-pane -D 5
 bind Up resize-pane -U 5
 
 # Menu
-bind p display-menu -x R -y P \
+bind m display-menu -x R -y P \
     "New Session"                        S "command-prompt -p \"New Session:\" \"new-session -A -s '%%'\"" \
     "Kill Session"                       x "kill-session" \
     "Kill Other Session(s)"              X "kill-session -a" \
