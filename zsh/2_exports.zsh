@@ -18,7 +18,9 @@ export TMUXP_CONFIGDIR=$HOME/.config/tmuxp
 
 
 # Homebrew for linux
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [[ $(uname) == "linux" ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 
 # pyenv
