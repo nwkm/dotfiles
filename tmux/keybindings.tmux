@@ -56,12 +56,12 @@ bind C-l send-keys 'C-l'
 bind C-t source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
 
 # navigate windows
-bind -n M-Right next-window
-bind -n M-Left previous-window
+bind -n M-n next-window
+bind -n M-p previous-window
 
 # navigate sessions
-bind -n M-p switch-client -p
-bind -n M-n switch-client -n
+bind n switch-client -n
+bind p switch-client -p
 
 # bind resizing of panes to arrows (resizes by steps of 5 lines/columns)
 bind Left resize-pane -L 5
