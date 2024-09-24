@@ -18,7 +18,7 @@ export TMUXP_CONFIGDIR=$HOME/.config/tmuxp
 
 
 # Homebrew for linux
-if [[ $(uname) == "linux" ]]; then
+if [[ $(uname) != "Darwin" ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
