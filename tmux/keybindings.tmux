@@ -69,6 +69,21 @@ bind Right resize-pane -R 5
 bind Down resize-pane -D 5
 bind Up resize-pane -U 5
 
+# popup
+bind -n M-b popup -d '#{pane_current_path}' -E -h 100% -w 100% -x 100% 'btop'                       #  btop process manager
+bind -n M-x popup -d '#{pane_current_path}' -E -h 100% -w 100% -x 100% "tmux kill-session -a"       # kill other tmux sessions
+bind -n M-K popup -d '#{pane_current_path}' -E -h 100% -w 100% -x 100% "ps aux | fzf --height 100% --layout=reverse --prompt='Select process to kill: ' | awk '{print $2}' | xargs -r sudo kill"    # pkill process
+
+# quick window
+bind q new-window -n "sql client" -c "#{pane_current_path}" "lazysql"                     # lazysql client        : https://github.com/jorgerojas26/lazysql
+bind u new-window -n "rest client" -c "#{pane_current_path}" "atac -d ./atac"             # atac rest client      : yay -S atac https://github.com/Julien-cpsn/ATAC
+bind t new-window -n "process manager" -c "#{pane_current_path}" "btop"                   # btop process man      : yay -S btop
+bind s new-window -n "search n replace" -c "#{pane_current_path}" "serpl"                 # search and replace    : https://github.com/yassinebridi/serpl/releases
+# bind d new-window -n "docker" -c "#{pane_current_path}" "lazydocker"                      # lazy docker ui        : yay -S lazydocker
+# bind g new-window -n "git" -c "#{pane_current_path}" "lazygit"                            # lazy git ui           : yay -S lazygit
+# bind c new-window -n "dotfiles" -c "#{pane_current_path}" "lazygit -p $mydotfiles"        # lazygit dotfiles      : lazygit in dotfiles dir
+# bind f new-window -n "yazi" -c "#{pane_current_path}" "yazi"                              # yazi term filemanager : https://github.com/mkchoi212/fac
+
 # Menu
 bind m display-menu -x R -y P \
     "New Session"                        S "command-prompt -p \"New Session:\" \"new-session -A -s '%%'\"" \
